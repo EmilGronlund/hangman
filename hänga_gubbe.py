@@ -1,15 +1,25 @@
 import random
 
-ordlista = ["kalender", "fotograf", "applåder", "trädgård", "semester", "slutföra", 
-            "barnbarn", "katterna", "tandvård", "sjukvård", "långsamt", "kattunge", 
-            "förtjust", "skolbänk", "hundarna", "matbutik", "stadshus", "hotellet"]
+ordlista = ["ö", "å", 
+            "te", "le", "ko", "rå", "ny", "öl", 
+            "bil", "hus", "hej", "vin", "pil", "sko", 
+            "katt", "hund", "skog", "pool", "bygg", "moln",
+            "äpple", "skola", "köket", "havet", "cykel", "pojke"]
+
+fel_gissningar = []
+antal_gissningar = 10
 
 ord = random.choice(ordlista)
 bokstäver = list(ord)
-luckor = ("_ _ _ _ _ _ _ _")
-print(luckor)
-gissning = input("Ange en bokstav: ")
-if gissning in bokstäver:
-    bokstäver.index(gissning)
-else:
-    print(luckor)
+while antal_gissningar != 0:
+    print("_ " * len(bokstäver))
+    gissning = input("Ange en bokstav: ")
+
+    if gissning in bokstäver:
+        print(True)
+
+    if gissning not in bokstäver:
+        fel_gissningar.append(gissning)
+        print(fel_gissningar)
+        antal_gissningar -= 1
+        print("Antal gissningar kvar: ", antal_gissningar)
