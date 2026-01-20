@@ -4,7 +4,9 @@ ordlista = ["ö", "å",
             "te", "le", "ko", "rå", "ny", "öl", 
             "bil", "hus", "hej", "vin", "pil", "sko", 
             "katt", "hund", "skog", "pool", "bygg", "moln",
-            "äpple", "skola", "köket", "havet", "cykel", "pojke"]
+            "äpple", "skola", "köket", "havet", "cykel", "pojke", 
+            "blomma", "socker", "färger", "rummet", "låtsas", "spring",
+            "apelsin", "elefant", "fönster", "klockan", "telefon", "grönsak"]
 
 fel_gissningar = []
 antal_gissningar = 10
@@ -22,4 +24,4 @@ while antal_gissningar != 0:
         fel_gissningar.append(gissning)
         print(fel_gissningar)
         antal_gissningar -= 1
-        print("Antal gissningar kvar: ", antal_gissningar)
+        print("Gissningar kvar: ", antal_gissningar)
