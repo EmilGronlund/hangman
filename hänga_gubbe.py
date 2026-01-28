@@ -6,7 +6,9 @@ ordlista = ["ö", "å",
             "katt", "hund", "skog", "pool", "bygg", "moln",
             "äpple", "skola", "köket", "havet", "cykel", "pojke", 
             "blomma", "socker", "färger", "rummet", "låtsas", "spring",
-            "apelsin", "elefant", "fönster", "klockan", "telefon", "grönsak"]
+            "apelsin", "elefant", "fönster", "klockan", "telefon", "grönsak",
+            "ryggsäck", "stjärnor", "regnbåge", "teckning", "rullstol", "lekplats",
+            "skrivbord", "flygplats", "kylskåpet", "tidningar", "veckopeng", "bokhandel"]
 
 fel_gissningar = []
 antal_gissningar = 10
@@ -17,7 +19,13 @@ luckor = ["_"] * len(bokstäver)
 
 while antal_gissningar > 0:
     print(luckor)
-    gissning = input("Ange en bokstav: ")
+
+    if "_" not in luckor:
+        print("Du hittade ordet!🎉")
+        print("Du använde", 10 - antal_gissningar, "/ 10 gissningar.")
+        break
+
+    gissning = input("Ange en bokstav: ").lower()
 
     if gissning in fel_gissningar:
         print("Du har redan gissat på denna bokstav.")
@@ -35,5 +43,5 @@ while antal_gissningar > 0:
         print("Gissningar kvar: ", antal_gissningar)
 
     if antal_gissningar == 0:
-        print("Du har inga gissningar kvar, du förlorade.")
+        print("Du har inga gissningar kvar, du förlorade.🥀")
         print("Ordet var: ", ord)
