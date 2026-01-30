@@ -11,24 +11,34 @@ ordlista = ["ö", "å",
             "skrivbord", "flygplats", "kylskåpet", "tidningar", "veckopeng", "bokhandel"]
 
 fel_gissningar = []
-antal_gissningar = 10
+antal_gissningar = 8
 
 ord = random.choice(ordlista)
 bokstäver = list(ord)
 luckor = ["_"] * len(bokstäver)
 
-while antal_gissningar > 0:
-    print(luckor)
+while True:
+    print(" ".join(luckor))
 
     if "_" not in luckor:
         print("Du hittade ordet!🎉")
-        print("Du använde", 10 - antal_gissningar, "/ 10 gissningar.")
-        break
+        print("Du använde", 8 - antal_gissningar, "/ 8 gissningar.")
+        fråga = input("Vill du spela igen? (j/n): ").lower()
+        if fråga == "n":
+            break
+        else:
+            ord = random.choice(ordlista)
+            bokstäver = list(ord)
+            luckor = ["_"] * len(bokstäver)
+            continue
 
     gissning = input("Ange en bokstav: ").lower()
 
     if gissning in fel_gissningar:
         print("Du har redan gissat på denna bokstav.")
+
+    if len(gissning) > 1:
+        print("Du kan endast gissa på 1 bokstav.")
 
     elif gissning in bokstäver:
         for i, bokstav in enumerate(bokstäver):
@@ -45,3 +55,11 @@ while antal_gissningar > 0:
     if antal_gissningar == 0:
         print("Du har inga gissningar kvar, du förlorade.🥀")
         print("Ordet var: ", ord)
+        fråga = input("Vill du spela igen? (j/n): ").lower()
+        if fråga == "n":
+            break
+        else:
+            ord = random.choice(ordlista)
+            bokstäver = list(ord)
+            luckor = ["_"] * len(bokstäver)
+            continue
