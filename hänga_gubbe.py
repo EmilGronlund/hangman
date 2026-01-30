@@ -11,6 +11,7 @@ ordlista = ["ö", "å",
             "skrivbord", "flygplats", "kylskåpet", "tidningar", "veckopeng", "bokhandel"]
 
 fel_gissningar = []
+rätt_gissningar = []
 antal_gissningar = 8
 
 ord = random.choice(ordlista)
@@ -27,6 +28,9 @@ while True:
         if fråga == "n":
             break
         else:
+            fel_gissningar = []
+            rätt_gissningar = []
+            antal_gissningar = 8
             ord = random.choice(ordlista)
             bokstäver = list(ord)
             luckor = ["_"] * len(bokstäver)
@@ -34,22 +38,23 @@ while True:
 
     gissning = input("Ange en bokstav: ").lower()
 
-    if gissning in fel_gissningar:
+    if gissning in fel_gissningar or gissning in rätt_gissningar:
         print("Du har redan gissat på denna bokstav.")
 
-    if not gissning.isalpha():
+    elif not gissning.isalpha():
         print("Din gissning kan endast innehålla bokstäver.")
 
     elif len(gissning) > 1:
         print("Du kan endast gissa på 1 bokstav.")
 
     elif gissning in bokstäver:
+        rätt_gissningar.append(gissning)
         for i, bokstav in enumerate(bokstäver):
             if gissning == bokstav:
                 print("Hittade: ", gissning)
                 luckor[i] = gissning
 
-    elif gissning not in bokstäver:
+    else:
         fel_gissningar.append(gissning)
         print(fel_gissningar)
         antal_gissningar -= 1
@@ -60,8 +65,12 @@ while True:
         print("Ordet var: ", ord)
         fråga = input("Vill du spela igen? (j/n): ").lower()
         if fråga == "n":
+            print("Spelet har avslutats.")
             break
         else:
+            fel_gissningar = []
+            rätt_gissningar = []
+            antal_gissningar = 8
             ord = random.choice(ordlista)
             bokstäver = list(ord)
             luckor = ["_"] * len(bokstäver)
