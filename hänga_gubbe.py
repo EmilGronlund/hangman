@@ -37,7 +37,10 @@ while True:
     if gissning in fel_gissningar:
         print("Du har redan gissat på denna bokstav.")
 
-    if len(gissning) > 1:
+    if not gissning.isalpha():
+        print("Din gissning kan endast innehålla bokstäver.")
+
+    elif len(gissning) > 1:
         print("Du kan endast gissa på 1 bokstav.")
 
     elif gissning in bokstäver:
