@@ -26,6 +26,7 @@ while True:
         print("Du använde", 8 - antal_gissningar, "/ 8 gissningar.")
         fråga = input("Vill du spela igen? (j/n): ").lower()
         if fråga == "n":
+            print("Spelet har avslutats.")
             break
         else:
             fel_gissningar = []
